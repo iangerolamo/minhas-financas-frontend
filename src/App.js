@@ -1,9 +1,10 @@
 import 'bootswatch/dist/flatly/bootstrap.css';
+import Login from './views/login';
 
 function App() {
   return (
     <div>
-      <button type="button" className="btn btn-primary">Primary</button>
+      <Login />
     </div>
   );
 }
