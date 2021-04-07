@@ -1,7 +1,7 @@
 function Card(props) {
   return (
     <div className="card md-3">
-      <div className="card-header">{props.title}</div>
+      <h3 className="card-header">{props.title}</h3>
       <div className="card-body">
         {props.children}
       </div>
