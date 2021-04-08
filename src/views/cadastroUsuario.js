@@ -61,6 +61,7 @@ function CadastroUsuario() {
           <button onClick={cadastrar} type="button" className="btn btn-success">Salvar</button>
           <button type="button" className="btn btn-danger">Cancelar</button>
         </div>
+        
       </div>
     </div>
     </Card>
