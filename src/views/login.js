@@ -24,7 +24,7 @@ function Login() {
                   <div className="bs-component">
                     <fieldset>
                       <FormGroup label="Email: *" htmlFor="exampleInputEmail1">
-                        <input 
+                        <input
                           type="Email"
                           value={email}
                           onChange={e => setEmail(e.target.value)}
@@ -35,7 +35,7 @@ function Login() {
                         />
                       </FormGroup>
                       <FormGroup label="Senha: *" htmlFor="exampleInputPassword1">
-                        <input 
+                        <input
                           type="password"
                           value={senha}
                           onChange={e => setSenha(e.target.value)}
