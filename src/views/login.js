@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import Card from '../components/card';
 import FormGroup from '../components/form-group';
@@ -11,8 +12,14 @@ function Login() {
   const [senha, setSenha] = useState("");
 
   function entrar() {
-    console.log("Email: ", {email})
-    console.log("Senha: " ,{senha})
+    axios.post('http://localhost:8080/api/usuarios/autenticar', {
+      email: email,
+      senha: senha
+    }).then(response => {
+      console.log(response)
+    }).catch( erro => {
+      console.log(erro.response)
+    })
   }
 
   return (
