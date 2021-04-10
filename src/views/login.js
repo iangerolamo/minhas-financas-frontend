@@ -2,9 +2,11 @@ import { useState } from 'react';
 
 import Card from '../components/card';
 import FormGroup from '../components/form-group';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
 
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
@@ -44,7 +46,7 @@ function Login() {
                       />
                     </FormGroup>
                     <button onClick={entrar} className="btn btn-success">Entrar</button>
-                    <button className="btn btn-danger">Cadastrar</button>
+                    <button onClick={() => history.push("/cadastro-usuarios")} className="btn btn-danger">Cadastrar</button>
                   </fieldset>
                 </div>
               </div>
