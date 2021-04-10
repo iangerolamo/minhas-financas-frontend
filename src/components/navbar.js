@@ -13,7 +13,7 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarReponsive">
           <ul className={"navbar-nav"}>
-            <NavbarItem href={"#/"} label={"Home"} />
+            <NavbarItem href={"#/home"} label={"Home"} />
             <NavbarItem href={"#/cadastro-usuarios"} label={"Usuários"} />
             <NavbarItem href={"#/lancamentos"} label={"Lançamentos"} />
             <NavbarItem href={"#/login"} label={"Login"} />
