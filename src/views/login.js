@@ -10,15 +10,16 @@ function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [mensagemErro, setMensagemErro] = useState(null)
 
   function entrar() {
     axios.post('http://localhost:8080/api/usuarios/autenticar', {
       email: email,
       senha: senha
     }).then(response => {
-      console.log(response)
+      history.push("/home")
     }).catch( erro => {
-      console.log(erro.response)
+      setMensagemErro(erro.response.data)
     })
   }
 
@@ -27,6 +28,9 @@ function Login() {
       <div className="col-md-6" style={ {position : 'relative', left: '300px'} }>
         <div className="bs-docs-section">
           <Card title="Login">
+            <div className={"row"}>
+              <span>{mensagemErro}</span>
+            </div>
             <div className="row">
               <div className="col-lg-12">
                 <div className="bs-component">
