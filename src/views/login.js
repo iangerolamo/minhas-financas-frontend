@@ -17,6 +17,7 @@ function Login() {
       email: email,
       senha: senha
     }).then(response => {
+      localStorage.setItem('_usuario_logado', JSON.stringify(response.data))
       history.push("/home")
     }).catch( erro => {
       setMensagemErro(erro.response.data)

@@ -7,7 +7,11 @@ function Home() {
   const [saldo, setSaldo] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/usuarios/7/saldo')
+    const usuarioLogadoString = localStorage.getItem('_usuario_logado')
+    const usuarioLogado = JSON.parse(usuarioLogadoString)
+
+    console.log("Usuário logado do localStorage: ", usuarioLogado);
+    axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}/saldo`)
       .then(response => {
         setSaldo(response.data);
       }).catch(error => {
