@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
+
+import UsuarioService from "../app/service/usuarioService";
 
 import Card from '../components/card';
 import FormGroup from '../components/form-group';
@@ -11,18 +12,31 @@ function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [mensagemErro, setMensagemErro] = useState(null)
+  const service = new UsuarioService();
 
   function entrar() {
-    axios.post('http://localhost:8080/api/usuarios/autenticar', {
+    service.autenticar({
       email: email,
       senha: senha
     }).then(response => {
       localStorage.setItem('_usuario_logado', JSON.stringify(response.data))
       history.push("/home")
-    }).catch( erro => {
+    }).catch(erro => {
+      console.log(erro.response);
       setMensagemErro(erro.response.data)
-    })
+    });
   }
+
+  //   axios.post('http://localhost:8080/api/usuarios/autenticar', {
+  //     email: email,
+  //     senha: senha
+  //   }).then(response => {
+  //     localStorage.setItem('_usuario_logado', JSON.stringify(response.data))
+  //     history.push("/home")
+  //   }).catch( erro => {
+  //     setMensagemErro(erro.response.data)
+  //   })
+  // }
 
   return (
     <div className="row">

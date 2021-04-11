@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const httpClient = axios.create({
-  baseURL: 'http//localhost:8080'
+  baseURL: "http://localhost:8080"
 })
 
 class Apiservice {
@@ -11,19 +11,23 @@ class Apiservice {
   }
 
   post(url, objeto){
-    return httpClient.post(url, objeto)
+    const requestUrl = `${this.apiurl}${url}`
+    return httpClient.post(requestUrl, objeto)
   }
 
   put(url, objeto){
-    return httpClient.put(url, objeto)
+    const requestUrl = `${this.apiurl}${url}`
+    return httpClient.put(requestUrl, objeto)
   }
 
   delete(url){
-    return httpClient.delete(url)
+    const requestUrl = `${this.apiurl}${url}`
+    return httpClient.delete(requestUrl)
   }
 
   get(url){
-    return httpClient.get(url)
+    const requestUrl = `${this.apiurl}${url}`
+    return httpClient.get(requestUrl)
   }
 
 
