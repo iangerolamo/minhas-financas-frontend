@@ -5,6 +5,7 @@ import UsuarioService from "../app/service/usuarioService";
 import Card from '../components/card';
 import FormGroup from '../components/form-group';
 import { useHistory } from 'react-router-dom';
+import LocalstorageService from "../app/service/localstorageService";
 
 function Login() {
 
@@ -19,10 +20,9 @@ function Login() {
       email: email,
       senha: senha
     }).then(response => {
-      localStorage.setItem('_usuario_logado', JSON.stringify(response.data))
+      LocalstorageService.adicionarItem('_usuario_logado', response.data)
       history.push("/home")
     }).catch(erro => {
-      console.log(erro.response);
       setMensagemErro(erro.response.data)
     });
   }
