@@ -6,13 +6,13 @@ import Card from '../components/card';
 import FormGroup from '../components/form-group';
 import { useHistory } from 'react-router-dom';
 import LocalstorageService from "../app/service/localstorageService";
+import { mensagemErro} from '../components/toastr';
 
 function Login() {
 
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [mensagemErro, setMensagemErro] = useState(null)
   const service = new UsuarioService();
 
   function entrar() {
@@ -23,29 +23,15 @@ function Login() {
       LocalstorageService.adicionarItem('_usuario_logado', response.data)
       history.push("/home")
     }).catch(erro => {
-      setMensagemErro(erro.response.data)
+      mensagemErro(erro.response.data)
     });
   }
-
-  //   axios.post('http://localhost:8080/api/usuarios/autenticar', {
-  //     email: email,
-  //     senha: senha
-  //   }).then(response => {
-  //     localStorage.setItem('_usuario_logado', JSON.stringify(response.data))
-  //     history.push("/home")
-  //   }).catch( erro => {
-  //     setMensagemErro(erro.response.data)
-  //   })
-  // }
 
   return (
     <div className="row">
       <div className="col-md-6" style={ {position : 'relative', left: '300px'} }>
         <div className="bs-docs-section">
           <Card title="Login">
-            <div className={"row"}>
-              <span>{mensagemErro}</span>
-            </div>
             <div className="row">
               <div className="col-lg-12">
                 <div className="bs-component">

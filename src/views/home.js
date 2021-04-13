@@ -11,14 +11,13 @@ function Home() {
   useEffect(() => {
     const usuarioLogado = LocalstorageService.obterItem('_usuario_logado')
 
-
     usuarioService.obterSaldoPorUsuario(usuarioLogado.id)
       .then(response => {
         setSaldo(response.data);
       }).catch(error => {
         console.log(error.response)
     })
-  }, [saldo]);
+  });
 
 
   return(
