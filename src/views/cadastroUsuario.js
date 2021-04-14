@@ -17,7 +17,40 @@ function CadastroUsuario() {
   const [senha, setSenha] = useState("");
   const [senhaRepeticao, setSenhaRepeticao] = useState("");
 
+  function validar() {
+    const msgs = []
+
+    if (!nome) {
+      msgs.push("O campo Nome é obrigatório.")
+    }
+
+    if (!email) {
+      msgs.push("O campo Email é obrigatório.")
+    } else if (!email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/)) {
+      msgs.push("Informe um Email válido")
+    }
+
+    if (!senha || !senhaRepeticao) {
+      msgs.push("Digite a senha 2x.")
+    } else if (senha !== senhaRepeticao) {
+      msgs.push("As senhas não batem.")
+    }
+
+
+    return msgs;
+  }
+
   function cadastrar() {
+
+    const msgs = validar();
+
+    if (msgs && msgs.length > 0) {
+      msgs.forEach((msg, index) => {
+        mensagemErro(msg)
+      });
+      return false;
+    }
+
     const usuario = {
       nome: nome,
       email: email,
