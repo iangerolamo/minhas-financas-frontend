@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 import Card from "../../components/card";
 import FormGroup from "../../components/form-group";
@@ -6,6 +6,10 @@ import SelectMenu from "../../components/selectMenu";
 import LancamentosTable from "./lancamentosTable";
 
 function ConsultaLancamentos() {
+
+  const [ano, setAno] = useState('');
+  const [mes, setMes] = useState('');
+  const [tipo, setTipo] = useState('');
 
   const meses = [
     { label: 'Selecione...', value: '' },
@@ -33,6 +37,14 @@ function ConsultaLancamentos() {
     { id: 1, descricao: 'Salário', valor: 5000, mes: 1, tipo: 'Receita', status: 'Efetivado'}
   ]
 
+  function buscar() {
+    console.log({
+      "ano" : ano,
+      "mes" : mes,
+      "tipo" : tipo
+    })
+  }
+
     return (
         <Card title={"Consulta Lançamentos"}>
           <div className={"row"}>
@@ -42,19 +54,28 @@ function ConsultaLancamentos() {
                   <input type={"text"}
                          className={"form-control"}
                          id={"inputAno"}
-                         aria-describedby={"emailHelp"}
+                         value={ano}
+                         onChange={e => setAno(e.target.value)}
                          placeholder={"Digite o Ano"} />
                 </FormGroup>
 
                 <FormGroup htmlFor="inputMes" label="Mês: ">
-                  <SelectMenu id="inputMes" className={"form-control"} lista={meses}/>
+                  <SelectMenu id="inputMes"
+                              className={"form-control"}
+                              value={mes}
+                              onChange={e => setMes(e.target.value)}
+                              lista={meses}/>
                 </FormGroup>
 
                 <FormGroup htmlFor="inputTipo" label="Tipo: ">
-                  <SelectMenu id="inputTipo" className={"form-control"} lista={tipos}/>
+                  <SelectMenu id="inputTipo"
+                              className={"form-control"}
+                              value={tipo}
+                              onChange={e => setTipo(e.target.value)}
+                              lista={tipos}/>
                 </FormGroup>
 
-                <button type={"button"} className={"btn btn-success"}>Buscar</button>
+                <button onClick={buscar} type={"button"} className={"btn btn-success"}>Buscar</button>
                 <button type={"button"} className={"btn btn-danger"}>Cadastrar</button>
 
               </div>
