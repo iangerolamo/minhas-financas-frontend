@@ -6,7 +6,7 @@ import SelectMenu from "../components/selectMenu";
 
 function ConsultaLancamentos() {
 
-  const lista = [
+  const meses = [
     { label: 'Selecione...', value: '' },
     { label: 'Janeiro', value: 1 },
     { label: 'Fevereiro', value: 2 },
@@ -22,6 +22,12 @@ function ConsultaLancamentos() {
     { label: 'Dezembro', value: 12 }
   ];
 
+  const tipos = [
+    { label: 'Selecione...', value: '' },
+    { label: 'Despesa', value: 'DESPESA' },
+    { label: 'Receita', value: 'RECEITA' }
+  ];
+
     return (
         <Card title={"Consulta Lançamentos"}>
           <div className={"row"}>
@@ -34,8 +40,13 @@ function ConsultaLancamentos() {
                          aria-describedby={"emailHelp"}
                          placeholder={"Digite o Ano"} />
                 </FormGroup>
+
                 <FormGroup htmlFor="inputMes" label="Mês: ">
-                  <SelectMenu className={"form-control"} lista={lista}/>
+                  <SelectMenu id="inputMes" className={"form-control"} lista={meses}/>
+                </FormGroup>
+
+                <FormGroup htmlFor="inputTipo" label="Tipo: ">
+                  <SelectMenu id="inputTipo" className={"form-control"} lista={tipos}/>
                 </FormGroup>
 
               </div>
